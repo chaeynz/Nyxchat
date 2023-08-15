@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{d547ab81-8f42-437b-9b7a-724320425458}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ChatEngine.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ErrorHandler.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\components\Message.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\Serializer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ConnectionHandler.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\NetworkEngine.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\components\User.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserProfile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserSecurity.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ChatEngine.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ErrorHandler.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ConnectionHandler.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\NetworkEngine.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\components\Message.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\Serializer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\components\User.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserProfile.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserSecurity.hpp" />
+  </ItemGroup>
+</Project>
