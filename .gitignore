@@ -396,5 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/NyxchatClient/NyxchatClient.vcxproj.user
-/NyxchatNode/NyxchatNode.vcxproj.user
