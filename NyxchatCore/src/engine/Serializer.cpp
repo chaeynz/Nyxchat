@@ -1,8 +1,8 @@
-#include <iostream>
+// Serializer.cpp
 
 #include "include/engine/Serializer.hpp"
 
-std::vector<char> Serializer::serializeMessage(unsigned long long messageId, std::string messageContent, User* messageAuthor)
+boost::asio::const_buffer Serializer::serializeMessageContent(std::string messageContent)
 {
-
+	return boost::asio::buffer(messageContent);
 }

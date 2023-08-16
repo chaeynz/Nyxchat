@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "../NyxchatCore/include/components/Message.hpp"
+#include "engine/ChatEngine.hpp"
+#include "engine/IOHandler.hpp"
 
 int main() {
 
 
-
-	return 'i';
+	IOHandler::displayMessage("Hello");
 }

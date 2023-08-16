@@ -1,12 +1,15 @@
 // Serializer.hpp
-#include <iostream>
-#include <vector>
+
+#pragma once
+
+#include <boost/asio.hpp>
 
 #include "include/components/Message.hpp"
 
 class Serializer
 {
-  std::vector<char> serializeMessage(unsigned long long messageId, std::string messageContent, User* messageAuthor);
+public:
+	static boost::asio::const_buffer serializeMessageContent(std::string messageContent);
 };
 
 

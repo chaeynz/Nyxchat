@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatNode", "NyxchatNode\NyxchatNode.vcxproj", "{45F22DD8-165E-4110-B1EE-6713EF0E59A0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatClient", "NyxchatClient\NyxchatClient.vcxproj", "{426F67E5-0A57-4ACB-9384-311EAD06A0C0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45F22DD8-165E-4110-B1EE-6713EF0E59A0} = {45F22DD8-165E-4110-B1EE-6713EF0E59A0}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatCore", "NyxchatCore\NyxchatCore.vcxitems", "{C14B3F26-9281-4C9D-852C-6983423F4505}"
 EndProject
@@ -42,7 +45,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		NyxchatCore\NyxchatCore.vcxitems*{426f67e5-0a57-4acb-9384-311ead06a0c0}*SharedItemsImports = 4
-		NyxchatCore\NyxchatCore.vcxitems*{45f22dd8-165e-4110-b1ee-6713ef0e59a0}*SharedItemsImports = 4
 		NyxchatCore\NyxchatCore.vcxitems*{c14b3f26-9281-4c9d-852c-6983423f4505}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal
