@@ -3,14 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatCore", "NyxchatCore\NyxchatCore.vcxitems", "{D547AB81-8F42-437B-9B7A-724320425458}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatClient", "NyxchatClient\NyxchatClient.vcxproj", "{3A404618-13F1-49CC-9504-16DC2D3E9015}"
-	ProjectSection(ProjectDependencies) = postProject
-		{45F22DD8-165E-4110-B1EE-6713EF0E59A0} = {45F22DD8-165E-4110-B1EE-6713EF0E59A0}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatNode", "NyxchatNode\NyxchatNode.vcxproj", "{45F22DD8-165E-4110-B1EE-6713EF0E59A0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatClient", "NyxchatClient\NyxchatClient.vcxproj", "{426F67E5-0A57-4ACB-9384-311EAD06A0C0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NyxchatCore", "NyxchatCore\NyxchatCore.vcxitems", "{C14B3F26-9281-4C9D-852C-6983423F4505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,14 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Debug|x64.ActiveCfg = Debug|x64
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Debug|x64.Build.0 = Debug|x64
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Debug|x86.ActiveCfg = Debug|Win32
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Debug|x86.Build.0 = Debug|Win32
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Release|x64.ActiveCfg = Release|x64
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Release|x64.Build.0 = Release|x64
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Release|x86.ActiveCfg = Release|Win32
-		{3A404618-13F1-49CC-9504-16DC2D3E9015}.Release|x86.Build.0 = Release|Win32
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Debug|x64.ActiveCfg = Debug|x64
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Debug|x64.Build.0 = Debug|x64
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Debug|x86.ActiveCfg = Debug|Win32
@@ -36,6 +25,14 @@ Global
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Release|x64.Build.0 = Release|x64
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Release|x86.ActiveCfg = Release|Win32
 		{45F22DD8-165E-4110-B1EE-6713EF0E59A0}.Release|x86.Build.0 = Release|Win32
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Debug|x64.ActiveCfg = Debug|x64
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Debug|x64.Build.0 = Debug|x64
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Debug|x86.ActiveCfg = Debug|Win32
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Debug|x86.Build.0 = Debug|Win32
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Release|x64.ActiveCfg = Release|x64
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Release|x64.Build.0 = Release|x64
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Release|x86.ActiveCfg = Release|Win32
+		{426F67E5-0A57-4ACB-9384-311EAD06A0C0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,7 +41,8 @@ Global
 		SolutionGuid = {C6E40086-DD20-47FE-98E7-515D95007C98}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		NyxchatCore\NyxchatCore.vcxitems*{3a404618-13f1-49cc-9504-16dc2d3e9015}*SharedItemsImports = 4
-		NyxchatCore\NyxchatCore.vcxitems*{d547ab81-8f42-437b-9b7a-724320425458}*SharedItemsImports = 9
+		NyxchatCore\NyxchatCore.vcxitems*{426f67e5-0a57-4acb-9384-311ead06a0c0}*SharedItemsImports = 4
+		NyxchatCore\NyxchatCore.vcxitems*{45f22dd8-165e-4110-b1ee-6713ef0e59a0}*SharedItemsImports = 4
+		NyxchatCore\NyxchatCore.vcxitems*{c14b3f26-9281-4c9d-852c-6983423f4505}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal
