@@ -24,7 +24,6 @@ std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSocket(cons
 
 void ConnectionHandler::addConnection(std::string& targetIP, uint16_t targetPort) {
 	boost::asio::ip::tcp::resolver::results_type endpoints = resolver.resolve(targetIP, std::to_string(targetPort));
-
 	try
 	{
 		std::shared_ptr<boost::asio::ip::tcp::socket> socket = std::make_shared<boost::asio::ip::tcp::socket>(ioContext);
@@ -38,7 +37,6 @@ void ConnectionHandler::addConnection(std::string& targetIP, uint16_t targetPort
 		ErrorHandler::handleNetworkError();
 	}
 }
-
 void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpoint) {
 	/*
 	try
@@ -56,9 +54,15 @@ void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpo
 	*/
 }
 
-void ConnectionHandler::removeConnection(std::string& ip, uint16_t port) {
-	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address(ip), port);
-	activeConnections.erase(endpoint);
+void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetPort) {
+	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address(targetIP), targetPort);
+	if (activeConnections.find(endpoint) != activeConnections.end()) {
+		activeConnections[endpoint]->close();
+		activeConnections.erase(endpoint);
+	}
+	else {
+		// handle Error connection not found
+	}
 }
 
 void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data) {
