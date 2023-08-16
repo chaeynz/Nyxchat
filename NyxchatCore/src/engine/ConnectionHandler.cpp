@@ -10,7 +10,7 @@ std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::s
 	return activeConnections;
 }
 
-std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSocket(const std::string& ip, uint16_t port) {
+inline std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSocket(const std::string& ip, uint16_t port) {
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(ip), port);
 	auto it = activeConnections.find(endpoint);
 
@@ -22,7 +22,7 @@ std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSocket(cons
 }
 
 
-void ConnectionHandler::addConnection(std::string& targetIP, uint16_t targetPort) {
+inline void ConnectionHandler::addConnection(std::string& targetIP, uint16_t targetPort) {
 	boost::asio::ip::tcp::resolver::results_type endpoints = resolver.resolve(targetIP, std::to_string(targetPort));
 	try
 	{
@@ -37,7 +37,7 @@ void ConnectionHandler::addConnection(std::string& targetIP, uint16_t targetPort
 		ErrorHandler::handleNetworkError();
 	}
 }
-void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpoint) {
+inline void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpoint) {
 	/*
 	try
 	{
@@ -54,7 +54,7 @@ void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpo
 	*/
 }
 
-void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetPort) {
+inline void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetPort) {
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address(targetIP), targetPort);
 	if (activeConnections.find(endpoint) != activeConnections.end()) {
 		activeConnections[endpoint]->close();
@@ -65,10 +65,10 @@ void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetP
 	}
 }
 
-void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data) {
+inline void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data) {
 	boost::asio::write(socket, data);
 }
-void ConnectionHandler::sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data) {
+inline void ConnectionHandler::sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data) {
 	boost::asio::write(*socket, data);
 }
 
