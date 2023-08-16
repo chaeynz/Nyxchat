@@ -56,6 +56,11 @@ void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpo
 	*/
 }
 
+void ConnectionHandler::removeConnection(std::string& ip, uint16_t port) {
+	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address(ip), port);
+	activeConnections.erase(endpoint);
+}
+
 void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data) {
 	boost::asio::write(socket, data);
 }
