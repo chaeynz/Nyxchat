@@ -2,7 +2,7 @@
 
 #include "include/engine/Serializer.hpp"
 
-void Serializer::serializeMessage(Message* message)
+std::vector<char> Serializer::serializeMessage(unsigned long long messageId, std::string messageContent, User* messageAuthor)
 {
 
 }
