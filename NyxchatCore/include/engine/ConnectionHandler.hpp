@@ -38,5 +38,7 @@ public:
     static void sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data);
     static void sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data);
 
+    static void listen(uint16_t PORT, std::string IP);
+
 };
 

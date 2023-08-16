@@ -45,6 +45,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		NyxchatCore\NyxchatCore.vcxitems*{426f67e5-0a57-4acb-9384-311ead06a0c0}*SharedItemsImports = 4
+		NyxchatCore\NyxchatCore.vcxitems*{45f22dd8-165e-4110-b1ee-6713ef0e59a0}*SharedItemsImports = 4
 		NyxchatCore\NyxchatCore.vcxitems*{c14b3f26-9281-4c9d-852c-6983423f4505}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

@@ -71,3 +71,17 @@ void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asi
 void ConnectionHandler::sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data) {
 	boost::asio::write(*socket, data);
 }
+
+
+void ConnectionHandler::listen(uint16_t PORT, std::string IP)
+{
+	boost::asio::ip::tcp::acceptor acceptor(ConnectionHandler::ioContext, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), PORT));
+
+	while (1)
+	{
+		acceptor.accept(/*PlaceHolder*/);
+	}
+
+
+}
+

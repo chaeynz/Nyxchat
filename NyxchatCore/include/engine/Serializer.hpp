@@ -6,6 +6,8 @@
 
 #include "include/components/Message.hpp"
 
+#define serializeMessage(a); boost::asio::buffer(a);
+
 class Serializer
 {
 public:
