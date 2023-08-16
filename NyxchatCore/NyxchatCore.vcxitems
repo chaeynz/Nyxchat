@@ -14,6 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ConnectionHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ChatEngine.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ErrorHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\Message.cpp" />
@@ -25,6 +26,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserSecurity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ConnectionHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ChatEngine.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ErrorHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ConnectionHandler.hpp" />

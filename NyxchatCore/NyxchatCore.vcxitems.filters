@@ -10,6 +10,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\User.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserProfile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserSecurity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\ConnectionHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ChatEngine.hpp" />
@@ -21,5 +22,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\User.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserProfile.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserSecurity.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ConnectionHandler.hpp" />
   </ItemGroup>
 </Project>
