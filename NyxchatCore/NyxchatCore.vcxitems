@@ -17,6 +17,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\utils\Hex.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\EventHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\Message.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\User.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\UserProfile.cpp" />
@@ -27,10 +29,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\Serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\utils\Hex.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\EventHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\Message.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\User.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserProfile.hpp" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)include\components\UserSecurity.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ConnectionHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ErrorHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\NetworkEngine.hpp" />

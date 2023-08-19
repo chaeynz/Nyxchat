@@ -54,9 +54,14 @@ inline void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targ
 	*/
 }
 
-inline void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetPort) {
+
+
+inline void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t targetPort)
+{
 	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::make_address(targetIP), targetPort);
+
 	if (activeConnections.find(endpoint) != activeConnections.end()) {
+
 		activeConnections[endpoint]->close();
 		activeConnections.erase(endpoint);
 	}
@@ -65,7 +70,8 @@ inline void ConnectionHandler::removeConnection(std::string& targetIP, uint16_t 
 	}
 }
 
-inline void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data) {
+inline void ConnectionHandler::sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data)
+{
 	boost::asio::write(socket, data);
 }
 inline void ConnectionHandler::sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data) {
@@ -73,15 +79,37 @@ inline void ConnectionHandler::sendData(std::shared_ptr<boost::asio::ip::tcp::so
 }
 
 
-void ConnectionHandler::listen(uint16_t PORT, std::string IP)
+void ConnectionHandler::listenForData(uint16_t port, std::function<void(boost::asio::mutable_buffer)> callback)
 {
-	boost::asio::ip::tcp::acceptor acceptor(ConnectionHandler::ioContext, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), PORT));
-
-	while (1)
+	
+	boost::asio::ip::tcp::acceptor acceptor(ConnectionHandler::ioContext, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port));
+		for(;;)
 	{
-		acceptor.accept(/*PlaceHolder*/);
+		acceptor.accept(activeListener);
+
+		
 	}
 
 
 }
 
+void ConnectionHandler::handleListenedData(boost::asio::ip::tcp::socket socket, std::function<void(boost::asio::mutable_buffer)> callback) {
+	char data[4096];
+	boost::asio::mutable_buffer buffer(data, sizeof(data));
+
+	for (;;) {
+		boost::system::error_code error;
+		size_t length = activeListener.read_some(buffer, error);
+
+		if (error == boost::asio::error::eof)
+			break;  // Connection closed by the peer.
+		else if (error)
+			throw boost::system::system_error(error);  // Any other errors.
+
+		// If data is received, execute the callback
+		if (length > 0) {
+			callback(buffer);
+		}
+	}
+
+}

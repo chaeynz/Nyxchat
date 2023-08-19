@@ -5,3 +5,7 @@
 void ErrorHandler::handleNetworkError() {
 
 }
+
+void ErrorHandler::handleNoEventSubscriberFoundError() {
+
+}

@@ -6,8 +6,7 @@
 
 class UserSecurity
 {
-	unsigned long long int userID;
-	std::string passwdHash;
-	std::string passwdSalt;
+	char userID[128];
+	char userPrivateKey[6336]; //Kyber1024
 	boost::posix_time::ptime time;
 };

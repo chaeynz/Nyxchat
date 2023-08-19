@@ -5,4 +5,5 @@
 class ErrorHandler {
 public:
 	static void handleNetworkError();
+	static void handleNoEventSubscriberFoundError();
 };

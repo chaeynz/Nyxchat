@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include <string>
+
 class User {
 private:
-	unsigned long long userId;
+	char userId[128];
 
 public:
 	unsigned long long getUserId();

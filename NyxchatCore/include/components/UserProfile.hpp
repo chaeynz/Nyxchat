@@ -4,7 +4,7 @@
 
 class UserProfile
 {
-	unsigned long long userID;
+	char userID[128];
 	std::string username;
 	
 };

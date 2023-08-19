@@ -17,3 +17,11 @@ void NetworkEngine::transmitMessage(unsigned long long messageId, std::string me
 {
 	
 }
+
+void NetworkEngine::onNetworkIncomingDatastream(boost::asio::mutable_buffer data) {
+	Serializer::deserializeNetworkStream(data);
+}
+
+void NetworkEngine::startListener() {
+	ConnectionHandler::listenForData(2468, onNetworkIncomingDatastream);
+}

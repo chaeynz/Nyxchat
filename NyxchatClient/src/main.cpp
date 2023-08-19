@@ -3,8 +3,8 @@
 #include "engine/ChatEngine.hpp"
 #include "engine/IOHandler.hpp"
 
+#include "include/engine/EventHandler.hpp"
+
 int main() {
-
-
-	IOHandler::displayMessage("Hello");
+	EventHandler::subscribe(EventHandler::onNetworkInputReceived, ChatEngine::on);
 }

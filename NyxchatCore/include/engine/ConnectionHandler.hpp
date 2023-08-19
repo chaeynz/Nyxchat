@@ -4,10 +4,12 @@
 
 #include <memory>
 #include <map>
+#include <functional>
 
 #include <boost/asio.hpp>
 
 #include "include/engine/ErrorHandler.hpp"
+#include "include/engine/EventHandler.hpp"
 
 struct EndpointComparator {
     bool operator()(const boost::asio::ip::tcp::endpoint& lhs, const boost::asio::ip::tcp::endpoint& rhs) const {
@@ -38,7 +40,10 @@ public:
     static void sendData(boost::asio::ip::tcp::socket socket, boost::asio::const_buffer data);
     static void sendData(std::shared_ptr<boost::asio::ip::tcp::socket> socket, boost::asio::const_buffer data);
 
-    static void listen(uint16_t PORT, std::string IP);
+    static void listenForData(uint16_t, std::function<void(boost::asio::mutable_buffer)>);
+private:
+    static void handleListenedData(boost::asio::ip::tcp::socket socket, std::function<void(boost::asio::mutable_buffer)> callback);
+
 
 };
 
