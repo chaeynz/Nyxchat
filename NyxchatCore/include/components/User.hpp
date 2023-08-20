@@ -9,5 +9,5 @@ private:
 	char userId[128];
 
 public:
-	unsigned long long getUserId();
+	const char* getUserId() const;
 };

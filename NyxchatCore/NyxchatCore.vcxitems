@@ -17,6 +17,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\DHTHandler.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\UserHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\utils\Hex.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\EventHandler.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\components\Message.cpp" />
@@ -29,6 +31,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)src\engine\Serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\DHTHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\utils\Hex.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\EventHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\components\Message.hpp" />
@@ -38,6 +41,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\ErrorHandler.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\NetworkEngine.hpp" />
     <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\Serializer.hpp" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)include\engine\UserHandler.hpp" />
   </ItemGroup>
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />

@@ -2,6 +2,6 @@
 
 #include "include/components/User.hpp"
 
-unsigned long long User::getUserId() {
+const char* User::getUserId() const {
 	return userId;
 }

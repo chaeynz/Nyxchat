@@ -17,9 +17,11 @@ public:
 	            //  <onNetworkInputRecv>,    notify  <correspondingReceiver>;
 
 	static void registerCallback(const Event&, const Callback&);
+	static void unregisterCallback(const Event&, const Callback&);
 	static void notify(const Event&);
 
 	static void onNetworkInputReceived();
+	static void onUserNotFoundLocally();
 	
 
 	static std::shared_ptr<Event> onNetworkInputReceivedPtr;

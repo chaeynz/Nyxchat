@@ -2,6 +2,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include <boost/date_time/posix_time/posix_time.hpp>
 
 #include "../components/User.hpp"
@@ -12,15 +13,15 @@ private:
 	unsigned long long messageId;
 	boost::posix_time::ptime messageTimestamp;
 	std::string messageContent;
-	User* messageAuthor;
+	std::shared_ptr<User> messageAuthor;
 
 public:
 	unsigned long long getMessageId();
 	boost::posix_time::ptime getMessageTimestamp();
 	std::string getMessageContent();
-	User* getMessageAuthor();
+	std::shared_ptr<User> getMessageAuthor();
 
 
-	Message();
+	Message(unsigned long long, std::string, std::string, std::string);
 	~Message();
 };

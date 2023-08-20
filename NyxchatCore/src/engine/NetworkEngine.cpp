@@ -25,3 +25,8 @@ void NetworkEngine::onNetworkIncomingDatastream(boost::asio::mutable_buffer data
 void NetworkEngine::startListener() {
 	ConnectionHandler::listenForData(2468, onNetworkIncomingDatastream);
 }
+
+void NetworkEngine::requestUser(std::string userID) {
+	ConnectionHandler::sendData(ConnectionHandler::findSocket(DHTHandler::findFullNode(), ConnectionHandler::getFullNodePort()), Serializer::serializeUserRequest(userID));
+	UserHandler::addUser(user);
+}
