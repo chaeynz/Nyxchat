@@ -2,11 +2,13 @@
 
 #include "include/engine/ConnectionHandler.hpp"
 
+uint16_t ConnectionHandler::fullNodePort = 2468;
+
 std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::socket>, EndpointComparator> ConnectionHandler::activeConnections;
 boost::asio::io_context ConnectionHandler::ioContext;
 boost::asio::ip::tcp::resolver ConnectionHandler::resolver(ConnectionHandler::ioContext);
 
-std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::socket>, EndpointComparator> ConnectionHandler::getActiveConnections() {
+inline std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::socket>, EndpointComparator> ConnectionHandler::getActiveConnections() {
 	return activeConnections;
 }
 
@@ -18,7 +20,17 @@ inline std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSock
 		return it->second;
 	}
 
-	throw std::runtime_error("Socket for the given endpoint not found!");
+	ErrorHandler::handleSocketForEndpointNotFoundError(boost::asio::ip::address_v4::from_string(ip), port);
+}
+inline std::shared_ptr<boost::asio::ip::tcp::socket> ConnectionHandler::findSocket(const boost::asio::ip::address_v4& ip, uint16_t port) {
+	boost::asio::ip::tcp::endpoint endpoint(boost::asio::ip::address::from_string(ip), port);
+	auto it = activeConnections.find(endpoint);
+
+	if (it != activeConnections.end()) {
+		return it->second;
+	}
+
+	ErrorHandler::handleSocketForEndpointNotFoundError(ip, port);
 }
 
 
@@ -37,6 +49,24 @@ inline void ConnectionHandler::addConnection(std::string& targetIP, uint16_t tar
 		ErrorHandler::handleNetworkError();
 	}
 }
+
+inline void ConnectionHandler::addConnection(boost::asio::ip::address_v4 targetIP, uint16_t targetPort) {
+
+	boost::asio::ip::tcp::resolver::results_type endpoints = resolver.resolve(targetIP.to_string(), std::to_string(targetPort));
+	try
+	{
+		std::shared_ptr<boost::asio::ip::tcp::socket> socket = std::make_shared<boost::asio::ip::tcp::socket>(ioContext);
+		boost::asio::connect(*socket, endpoints);
+
+		boost::asio::ip::tcp::endpoint endpoint(targetIP, targetPort);
+		activeConnections[endpoint] = std::move(socket);
+	}
+	catch (const boost::system::system_error& e)
+	{
+		ErrorHandler::handleNetworkError();
+	}
+}
+
 inline void ConnectionHandler::addConnection(boost::asio::ip::tcp::endpoint targetEndpoint) {
 	/*
 	try

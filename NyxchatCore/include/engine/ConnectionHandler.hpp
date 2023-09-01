@@ -23,6 +23,8 @@ struct EndpointComparator {
 class ConnectionHandler
 {
 public:
+    static uint16_t fullNodePort;
+
 	static std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::socket>, EndpointComparator> activeConnections;
 	static boost::asio::ip::tcp::socket activeListener;
 
@@ -31,8 +33,10 @@ public:
 
     static std::map<boost::asio::ip::tcp::endpoint, std::shared_ptr<boost::asio::ip::tcp::socket>, EndpointComparator> getActiveConnections();
     static std::shared_ptr<boost::asio::ip::tcp::socket> findSocket(const std::string& ip, uint16_t port);
+    static std::shared_ptr<boost::asio::ip::tcp::socket> findSocket(const boost::asio::ip::address_v4&, uint16_t port);
 
-	static void addConnection(std::string& targetIP, uint16_t targetPort);
+	static void addConnection(std::string&, uint16_t);
+    static void addConnection(boost::asio::ip::address_v4, uint16_t);
     static void addConnection(boost::asio::ip::tcp::endpoint targetEndpoint);
     static void addConnection(boost::asio::ip::tcp::endpoint targetEndpoint, boost::asio::ip::tcp::socket targetSocket);
     static void removeConnection(std::string& targetIP, uint16_t targetPort);

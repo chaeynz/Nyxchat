@@ -13,6 +13,7 @@ class Serializer
 {
 public:
 	static boost::asio::const_buffer serializeMessageContent(std::string);
+	static boost::asio::const_buffer serializeRequestUser(std::string);
 
 	static std::string buffer_to_string(boost::asio::const_buffer);
 

@@ -1,3 +1,5 @@
+// EventHandler.hpp
+
 #pragma once
 
 #include <map>
@@ -7,11 +9,13 @@
 
 #include "include/engine/ErrorHandler.hpp"
 
-
+template <typename... Args>
 class EventHandler {
 public:
-	using Event = std::function<void()>;
-	using Callback = std::function<void()>;
+	using Event = std::function<void()>; 
+	using Callback = std::function<void(Args...)>;
+
+	using UserNotFoundHandler = EventHandler<std::string>;
 
 	static std::map <Event, std::vector<Callback>> eventSubscribers;
 	            //  <onNetworkInputRecv>,    notify  <correspondingReceiver>;
@@ -23,6 +27,6 @@ public:
 	static void onNetworkInputReceived();
 	static void onUserNotFoundLocally();
 	
-
-	static std::shared_ptr<Event> onNetworkInputReceivedPtr;
 };
+template <typename... Args>
+std::map<typename EventHandler<Args...>::Event, std::vector<typename EventHandler<Args...>::Callback>> EventHandler<Args...>::eventSubscribers;

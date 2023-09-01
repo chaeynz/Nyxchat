@@ -1,3 +1,5 @@
+// DHTHandler.cpp
+
 #include "include/engine/DHTHandler.hpp"
 
 boost::asio::ip::address_v4 backupNode = boost::asio::ip::address_v4::from_string("127.0.0.1");
@@ -16,6 +18,15 @@ inline boost::asio::ip::address_v4 DHTHandler::findFullNode() {
 	}
 	else {
 		return backupNode;
+	}
+}
+
+inline void DHTHandler::storeInDHT(std::string hashToStore, boost::asio::ip::address_v4 ipToStore) {
+	if (NetworkEngine::checkFullNodeStatus(ipToStore) == true) {
+		fullNodeDHT.insert(std::make_pair(hashToStore, ipToStore));
+	}
+	else {
+		clientNodeDHT.insert(std::make_pair(hashToStore, ipToStore));
 	}
 }
 

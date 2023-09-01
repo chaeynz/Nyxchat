@@ -1,3 +1,5 @@
+// UserHandler.hpp
+
 #pragma once
 
 #include <string>
@@ -10,8 +12,9 @@
 
 class UserHandler {
 public:
-	static std::vector<std::shared_ptr<User>> users;
+	static std::vector<std::shared_ptr<User>> localAvailableUsers;
 
+	static void addUser(User);
 	static std::shared_ptr<User> queryUser(std::string);
 	static std::shared_ptr<User> findUser(std::string);
 

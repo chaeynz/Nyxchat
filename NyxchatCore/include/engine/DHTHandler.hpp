@@ -1,3 +1,5 @@
+// DHTHandler.hpp
+
 #pragma once
 
 #include <map>
@@ -10,6 +12,7 @@
 
 class DHTHandler
 {
+public:
 	static std::map<std::string, boost::asio::ip::address_v4> clientNodeDHT;
 	static std::map<std::string, boost::asio::ip::address_v4> fullNodeDHT;
 	static boost::asio::ip::address_v4 backupNode;

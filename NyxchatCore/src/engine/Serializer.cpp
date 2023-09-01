@@ -7,6 +7,10 @@ boost::asio::const_buffer Serializer::serializeMessageContent(std::string messag
 	return boost::asio::buffer(messageContent);
 }
 
+boost::asio::const_buffer Serializer::serializeRequestUser(std::string userID) {
+    return boost::asio::buffer(userID);
+}
+
 std::string Serializer::buffer_to_string(boost::asio::const_buffer received) {
 	const char* data = boost::asio::buffer_cast<const char*>(received);
 	std::size_t size = boost::asio::buffer_size(received);
@@ -14,6 +18,8 @@ std::string Serializer::buffer_to_string(boost::asio::const_buffer received) {
 	std::string result(data, size);
 	return result;
 }
+
+
 
 std::string Serializer::deserializeNetworkStream(boost::asio::const_buffer received) {
 	std::string data = buffer_to_string(received);
