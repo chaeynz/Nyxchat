@@ -1,6 +1,6 @@
 // ChatEngine.cpp
 
-#include "ChatEngine.hpp"
+#include <node/engine/ChatEngine.hpp>
 
 void ChatEngine::chatOutMessage(std::string message) {
 	NetworkEngine::transmitMessage(message, "127.0.0.1");

@@ -1,9 +1,9 @@
 // ChatEngine.hpp
 
 
-#include "../NyxchatCore/include/engine/NetworkEngine.hpp"
-#include "../NyxchatCore/include/components/Message.hpp"
-#include "../NyxchatCore/include/components/User.hpp"
+#include <core/engine/NetworkEngine.hpp>
+#include <core/components/Message.hpp>
+#include <core/components/User.hpp>
 
 class ChatEngine {
 	static void chatOutMessage(std::string message);
