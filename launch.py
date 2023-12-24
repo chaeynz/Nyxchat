@@ -9,7 +9,7 @@ def print_message(message):
 
 def send_message(network_engine:NetworkEngine, user:User):
     message = Message(content=input("Message: "), author=user, recipient=User(user_id=input("Recipient ID: ")))
-    network_engine.send_message(message)
+    network_engine.syn_send_message(message)
 
 def receive(network_engine:NetworkEngine, event_handler:EventHandler):
     event_handler.subscribe('message_received', print_message)

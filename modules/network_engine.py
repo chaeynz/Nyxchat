@@ -1,5 +1,5 @@
 from modules.connection_handler import ConnectionHandler
-import modules.dht
+from modules.dht import find_ip_of_user
 
 from modules.message import Message
 
@@ -23,8 +23,8 @@ class NetworkEngine:
 
 
     def send_message(self, message:Message):
-        self.connection_handler.send(data=str(message), address=self.dht[message.recipient_id])
+        self.connection_handler.send(data=str(message), address=find_ip_of_user(message.recipient_id))
 
 
     def syn_send_message(self, message:Message):
-        self.connection_handler.syn_send(data=message.content, address=dht.find_ip_of_user(message.recipient_id))
+        self.connection_handler.syn_send(data=message.content, address=find_ip_of_user(message.recipient_id))
