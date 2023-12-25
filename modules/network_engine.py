@@ -1,5 +1,5 @@
 from modules.connection_handler import ConnectionHandler
-from modules.dht import find_ip_of_user
+from modules.dht import find_ip_of_user, DHT
 
 from modules.message import Message
 
@@ -12,9 +12,9 @@ class NetworkEngine:
     _self = None
 
 
-    def __init__(self):
-        self.connection_handler = ConnectionHandler()
-
+    def __init__(self, chat_port=1337, dht_port=48448):
+        self.connection_handler = ConnectionHandler(chat_port)
+        self.dht = DHT(dht_port)
 
     def __new__(cls):
         if cls._self is None:

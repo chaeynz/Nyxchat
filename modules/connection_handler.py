@@ -1,3 +1,4 @@
+import re
 import sys
 import socket
 import asyncio
@@ -11,10 +12,10 @@ from modules.event_handler import EventHandler
 class ConnectionHandler:
     _self = None
 
-    def __init__(self):
-        self.chat_port = 1337
+    def __init__(self, port):
+        self.chat_port = port
 
-    def __new__(cls):
+    def __new__(cls, port):
         if cls._self is None:
             cls._self = super().__new__(cls)
         return cls._self
@@ -36,6 +37,14 @@ class ConnectionHandler:
         try:
             data = data.encode()
             sock.sendall(data)
+            sock.settimeout(5.0)
+            response = sock.recv(4096)
+            if re.search("HTTP", data) is None:
+                return response.decode()
+            else:
+                return response.decode().split('\r\n\r\n')[1].strip()
+        except TimeoutError:
+            return None
         finally:
             sock.close()
 
