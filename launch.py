@@ -17,8 +17,7 @@ def receive(network_engine:NetworkEngine, event_handler:EventHandler):
 
 def prompt_user(network_engine:NetworkEngine, event_handler:EventHandler, user:User):
     try:
-        choice = int(input("""\t1. Send Message
-        \t2. Receive Message"""))
+        choice = int(input("  1. Send Message\n  2. Receive Message"))
         if choice == 1:
             send_message(network_engine=network_engine, user=user)
         elif choice == 2:
