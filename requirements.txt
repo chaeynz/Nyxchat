@@ -1,0 +1,7 @@
+cffi==1.16.0
+kademlia==2.2.2
+kyber-py==0.2.2
+pycparser==2.22
+pycryptodome==3.14.1
+rpcudp==5.0.0
+u-msgpack-python==2.8.0
